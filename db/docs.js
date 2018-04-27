@@ -9,7 +9,7 @@ function Doc(){
     var docFields = {
         orgId: {type: Schema.Types.ObjectId, ref: 'org', required: true},
         groupId: {type: String},
-        group_shared : {type: Boolean},
+        group_shared: {type: Boolean},
         userId: {type: String, required: true},
         name : {type: String,required: true},
         size: {type: String,required: true},

@@ -15,8 +15,11 @@
                     <div>{{doc.name}}</div>
                     <div>
                         <a href ng-click="$ctrl.viewDoc(doc)" data-toggle="modal" data-target="#viewDocModal">View</a>&nbsp;&nbsp;
-                        <a ng-if="doc.userId == $root.selectedUser._id" href ng-click="$ctrl.shareDoc(doc)">Share&nbsp;&nbsp;</a>
-                        <a ng-if="doc.userId == $root.selectedUser._id || $root.selectedUser.groupAdmin || $root.selectedUser.orgAdmin" href ng-click="$ctrl.deleteDoc(doc)">Delete&nbsp;&nbsp;</a>
+                        <a ng-click="$ctrl.pickDoc(doc)" ng-if="doc.userId == $root.selectedUser._id" href  data-toggle="modal" data-target="#shareDocModal">Share&nbsp;&nbsp;</a>
+                        <a ng-if="doc.userId == $root.selectedUser._id ||
+                                                ($root.selectedUser.groupAdmin && $root.selectedUser.groupId == doc.groupId) ||
+                                                ($root.selectedUser.orgAdmin && $root.selectedUser.orgId == doc.orgId)"
+                                                href ng-click="$ctrl.deleteDoc(doc)">Delete&nbsp;&nbsp;</a>
                     </div>
                 </li>
             </ul>
@@ -102,6 +105,40 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="shareDocModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Share Doc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <div class="alert alert-danger" role="alert" ng-if="$ctrl.userError">{{$ctrl.docError}}</div>
+                        <div class="form-group">
+                            <label>Group Id:</label>
+                            <input class="form-control" ng-model="$ctrl.shareDocData.sharedGroupId">
+                        </div>
+                        <div class="form-group">
+                            <label>User Id</label>
+                            <input class="form-control" ng-model="$ctrl.shareDocData.sharedUserId">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-info" ng-click="$ctrl.shareDoc()">Save</button>
+            </div>
         </div>
     </div>
 </div>

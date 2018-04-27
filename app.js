@@ -25,7 +25,7 @@ app.use('/api/v1/orgs', require('./routes/orgs'));
 app.use('/api/v1/users', require('./routes/users'));
 app.use('/api/v1/groups', require('./routes/groups'));
 app.use('/api/v1/docs', require('./routes/docs'));
-app.use('/api/v1/groupshare', require('./routes/groupshare'));
+app.use('/api/v1/share', require('./routes/shares'));
 
 
 app.use('/', require('./routes/index'));

@@ -22,6 +22,10 @@ sharingApp.controller('DocsViewController', ['$http', '$rootScope', '$scope',fun
 
     };
 
+    this.shareDocData ={
+
+    };
+
     var that = this;
 
 
@@ -67,18 +71,40 @@ sharingApp.controller('DocsViewController', ['$http', '$rootScope', '$scope',fun
             });
     };
 
-    this.shareDoc = function(doc) {
+    this.pickDoc = function(doc) {
 
-        this.shareDocData = doc;
-        this.shareDocData.group_shared = true;
-        console.log(this.shareDocData);
-        $http.put('/api/v1/groupshare', this.shareDocData)
+        this.shareDocData.docId = doc._id;
+        this.shareDocData.orgId = doc.orgId;
+        this.shareDocData.groupId = doc.groupId;
+        this.shareDocData.authorId = doc.userId;
+        this.shareDocData.sharedUserId = null;
+        this.shareDocData.sharedGroupId = null
+        // this.shareDocData.group_shared = true;
+        // console.log(this.shareDocData);
+        // $http.put('/api/v1/groupshare', this.shareDocData)
+        //     .then(function(result) {
+        //         console.log(result);
+        //         alert("The doc is shared with your group.")
+        //     }, function(err) {
+        //         console.log(err);
+        //     });
+    };
+
+    this.shareDoc = function() {
+
+
+        // this.shareDocData.group_shared = true;
+
+        $http.put('/api/v1/share', this.shareDocData)
             .then(function(result) {
                 console.log(result);
-                alert("The doc is shared with your group.")
+                $('#shareDocModal').modal('hide');
+                alert("The doc is shared with your group or user.")
+
             }, function(err) {
                 console.log(err);
             });
+
     };
 
     this.deleteDoc = function(doc) {

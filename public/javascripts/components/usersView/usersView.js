@@ -55,7 +55,6 @@ sharingApp.controller('UsersViewController', ['$http', '$rootScope', '$scope',fu
     $scope.$watch('$root.selectedGroup', function() {
         that.allUsers = that.allUsers_org;
         if ($rootScope.selectedGroup != null){
-            console.log($rootScope.selectedGroup);
             function checkgroup(user) {
                 return user.groupId == $rootScope.selectedGroup._id;
             }

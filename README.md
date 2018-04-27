@@ -1,6 +1,6 @@
 # Prerequisites 
 
-- [mongoDB](https://docs.mongodb.com/manual/installation/)
+
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [npm](https://www.npmjs.com/get-npm)
 - [NodeJS](https://nodejs.org/en/download/)

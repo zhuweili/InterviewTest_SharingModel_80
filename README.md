@@ -11,12 +11,11 @@ http://35.182.224.3:3000/
 
 
 # Setup
-0. Add environment variable called `DB_NAME` and give it a unique name. For example it could be `<YOUR_NAME>_SharingApp`
-1. Start mongoDB server 
-2. `git clone -b <YOUR_BRANCH_NAME> https://github.com/InsightRX/InterviewTest_ShatingModel.git`
-3. In terminal, in InterviewTest_ShatingModel directory, run `npm install`
-4. In the same dir, run `grunt build` - this tool is building all necessary files, and watches for changes in anything you do. For more details, see *Gruntfile.js*
-5. You can start the server by `DB_NAME=<YOUR_NAME>_SharingApp node bin/www`. Launch the app in browser `http://localhost:3000/`
+
+1. `git clone https://github.com/InsightRX/InterviewTest_ShatingModel.git`
+2. In terminal, in InterviewTest_ShatingModel directory, run `npm install`
+3. In the same dir, run `grunt build` - this tool is building all necessary files, and watches for changes in anything you do. For more details, see *Gruntfile.js*
+4. You can start the server by `bin/www`. Launch the app in browser `http://localhost:3000/`
 
 
 # Submitting an assignment 

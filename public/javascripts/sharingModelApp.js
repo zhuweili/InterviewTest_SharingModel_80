@@ -27,56 +27,9 @@ sharingApp.config(function($locationProvider, $stateProvider, $rootScopeProvider
         }
     };
 
-    // var userState = {
-    //     name: 'user',
-    //     url: '/user',
-    //     views: {
-    //         workspaceView: {
-    //             template: '<users-view></users-view>'
-    //         }
-    //     }
-    // };
-    //
-    //
-    // var orgState = {
-    //     name: 'org',
-    //     url: '/org',
-    //     views: {
-    //         workspaceView: {
-    //             template: '<org-view></org-view>'
-    //         }
-    //     }
-    // };
-    //
-    // var groupsState = {
-    //     name: 'group',
-    //     url: '/group',
-    //     views: {
-    //         workspaceView: {
-    //             template: '<groups-view></groups-view>'
-    //         }
-    //     }
-    // };
-    //
-    //
-    // var docState = {
-    //     name: 'doc',
-    //     url: '/doc',
-    //     views: {
-    //         workspaceView: {
-    //             template: '<docs-view></docs-view>'
-    //         }
-    //     }
-    // };
-
 
 
     $stateProvider.state(homeState);
-    // $stateProvider.state(userState);
-    // $stateProvider.state(orgState);
-    // $stateProvider.state(groupsState);
-    // $stateProvider.state(docState);
-
 
 
 

@@ -7,9 +7,6 @@ var dbUsers = require('../db/users').userModel;
 /* GET users listing. */
 router.get('/:userId', function(req, res, next) {
         console.log(req.params.userId)
-
-
-
         dbUsers.findOne({_id: req.params.userId}).lean().exec(function(err, user_info) {
             if(err){
                 res.status(500).send(err);
@@ -46,8 +43,6 @@ router.get('/:userId', function(req, res, next) {
                         });
                     }
                 }
-
-
 
             }
         });

@@ -24,32 +24,6 @@ sharingApp.controller('DocsViewController', ['$http', '$rootScope', '$scope',fun
 
     var that = this;
 
-    // this.$onInit = function() {
-    //     fetchAllDocs();
-    // };
-    //
-    // this.$onChanges = function(changeObj){
-    //     if(changeObj.org && changeObj.org.currentValue){
-    //         fetchAllDocs();
-    //     }
-    // };
-    //
-    // function fetchAllDocs(){
-    //     if(that.org){
-    //         var user_id = "all"
-    //         if ($rootScope.selectedUser._id != null) {
-    //             user_id = $rootScope.selectedUser._id
-    //         }
-    //         $http.get('/api/v1/docs/' + that.org._id/user_id)
-    //             .then(function(result) {
-    //                 that.allDocs = result.data;
-    //                 that.docError = null;
-    //             }, function(err) {
-    //                 console.log(err);
-    //                 that.docError = err.data;
-    //             });
-    //     }
-    // }
 
 
 

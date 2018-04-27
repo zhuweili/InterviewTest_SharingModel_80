@@ -19,7 +19,7 @@ sharingApp.controller('OrgViewController', ['$http', '$rootScope', function($htt
         name: null,
         description: null
     };
-    // console.log("njkvnf");
+
 
     var that = this;
 

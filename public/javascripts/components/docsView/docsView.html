@@ -1,0 +1,106 @@
+
+<div class="container spacer-top-10">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <h5 class="row justify-content-between">
+                    <label>Docs</label>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newDocModal">
+                        New Doc
+                    </button>
+                </h5>
+            </div>
+            <ul class="list-group spacer-bottom-10">
+                <li class="list-group-item" ng-repeat="doc in $ctrl.allDocs">
+                    <div>{{doc.name}}</div>
+                    <div>
+                        <a href ng-click="$ctrl.viewDoc(doc)" data-toggle="modal" data-target="#viewDocModal">View</a>&nbsp;&nbsp;
+                        <a ng-if="doc.userId == $root.selectedUser._id" href ng-click="$ctrl.shareDoc(doc)">Share&nbsp;&nbsp;</a>
+                        <a ng-if="doc.userId == $root.selectedUser._id || $root.selectedUser.groupAdmin || $root.selectedUser.orgAdmin" href ng-click="$ctrl.deleteDoc(doc)">Delete&nbsp;&nbsp;</a>
+                    </div>
+                </li>
+            </ul>
+            <p><br><br/></p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="newDocModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Doc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <div class="alert alert-danger" role="alert" ng-if="$ctrl.userError">{{$ctrl.docError}}</div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" ng-model="$ctrl.newDocData.name">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input class="form-control" ng-model="$ctrl.newDocData.description">
+                        </div>
+                        <div class="form-group">
+                            <label>Size</label>
+                            <input class="form-control" ng-model="$ctrl.newDocData.size">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-info" ng-click="$ctrl.createDoc()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="viewDocModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">View Doc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <div class="alert alert-danger" role="alert" ng-if="$ctrl.userError">{{$ctrl.docError}}</div>
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <p>{{$ctrl.viewDocData.name}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Date created:</label>
+                            <p>{{$ctrl.viewDocData.createdAt}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Version:</label>
+                            <p>{{$ctrl.viewDocData.__v}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Size:</label>
+                            <p>{{$ctrl.viewDocData.size}}</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <p>{{$ctrl.viewDocData.description}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

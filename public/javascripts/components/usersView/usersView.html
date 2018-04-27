@@ -1,0 +1,74 @@
+
+<div class="container spacer-top-10">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <h5 class="row justify-content-between">
+                    <label>Users</label>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newUserModal" ng-disabled="$root.selectedGroup == null">
+                        New user
+                    </button>
+                </h5>
+            </div>
+            <ul class="list-group spacer-bottom-10">
+                <li class="list-group-item"
+                    ng-repeat="user in $ctrl.allUsers"
+                    ng-click="$ctrl.showUsersDetail(user)"
+                    ng-class="{'bg-light': user.username == $root.selectedUser.username}"
+                >
+                    <div>{{user.firstName + ' ' + user.lastName + ' (' + user.username + ')'}}
+                        &nbsp;&nbsp;<span ng-if="user.groupAdmin" class="badge" style="background-color: #f89406;">Group Admin</span>
+                        &nbsp;&nbsp;<span ng-if="user.orgAdmin" class="badge" style="background-color: #468847;">Organization Admin</span>
+                    </div>
+                    <div><small>D.O.B: {{user.dob | dobDate}}</small></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <div class="alert alert-danger" role="alert" ng-if="$ctrl.userError">{{$ctrl.userError}}</div>
+                        <div class="form-group">
+                            <label>First name</label>
+                            <input class="form-control" ng-model="$ctrl.newUserData.firstName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Last name</label>
+                            <input class="form-control" ng-model="$ctrl.newUserData.lastName">
+                        </div>
+                        <div class="form-group">
+                            <label>D.O.B</label>
+                            <input class="form-control" ng-model="$ctrl.newUserData.dob">
+                        </div>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input class="form-control" ng-model="$ctrl.newUserData.username">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input class="form-control" type="tel" ng-model="$ctrl.newUserData.phone">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-info" ng-click="$ctrl.createUser()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

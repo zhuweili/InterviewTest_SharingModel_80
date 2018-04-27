@@ -1,0 +1,88 @@
+
+<div class="container spacer-top-10" id = "totalinfo">
+    <div class="row ">
+        <div class="col-sm">
+            <div class="container">
+                <h5 class="row justify-content-between">
+                    <label>Organizations</label>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newOrgModal">
+                        New Org
+                    </button>
+                </h5>
+            </div>
+            <ul class="list-group spacer-bottom-10">
+                <li class="list-group-item"
+                    ng-repeat="org in $ctrl.allOrgs"
+                    ng-click="$ctrl.showUsers(org)"
+                    ng-class="{'bg-light': org.name === $ctrl.selectedOrg.name}">
+                    <div>{{org.name}} <span ng-if="org.description">| {{org.description}}</span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row collapse spacer-top-10" id="details">
+        <div class="container border rounded">
+            <div class="row">
+                <div class="col-sm">
+                    <groups-view org="$ctrl.selectedOrg"></groups-view>
+                </div>
+                <div class="col-sm">
+                    <users-view org="$ctrl.selectedOrg"></users-view>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 row collapse spacer-top-10" id="userdetails">
+        <div class="container border rounded">
+            <div class="row">
+                <div class="col-sm">
+                    <userdetail-view></userdetail-view>
+                </div>
+
+                <div class="col-sm">
+                    <docs-view org="$ctrl.selectedOrg"></docs-view>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="newOrgModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New organization</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <div class="alert alert-danger" role="alert" ng-if="$ctrl.orgError">{{$ctrl.orgError}}</div>
+                        <div class="form-group">
+                            <label>Organization name</label>
+                            <input class="form-control" ng-model="$ctrl.newOrgData.name">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" ng-model="$ctrl.newOrgData.description"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-info" ng-click="$ctrl.createOrg()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+
+<div class="container spacer-top-10">
+    <div class="row">
+        <div class="col-sm">
+            <div class="container">
+                <h5 class="row justify-content-between">
+                    <label>Groups</label>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newGroupModal">
+                        New Group
+                    </button>
+                </h5>
+            </div>
+            <ul class="list-group spacer-bottom-10">
+                <li class="list-group-item"
+                    ng-repeat="group in $ctrl.allGroups"
+                    ng-click="$ctrl.showGroup(group)"
+                    ng-class="{'bg-light': group.name == $root.selectedGroup.name}"
+                >
+                    <div>{{group.name}}</div>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="newGroupModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Group</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <div class="alert alert-danger" role="alert" ng-if="$ctrl.userError">{{$ctrl.groupError}}</div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" ng-model="$ctrl.newGroupData.name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-info" ng-click="$ctrl.createGroup()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
